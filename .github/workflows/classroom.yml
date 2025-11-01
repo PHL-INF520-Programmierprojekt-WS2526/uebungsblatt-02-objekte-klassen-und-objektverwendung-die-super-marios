@@ -1,0 +1,124 @@
+name: Autograding Tests
+'on':
+- push
+- repository_dispatch
+permissions:
+  checks: write
+  actions: read
+  contents: read
+jobs:
+  run-autograding-tests:
+    runs-on: ubuntu-latest
+    if: github.actor != 'github-classroom[bot]'
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    - name: Pet Adoption Center Task 3 Pet Buddy
+      id: pet-adoption-center-task-3-pet-buddy
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Pet Adoption Center Task 3 Pet Buddy
+        setup-command: ''
+        command: gradle test --tests de.phl.programmingproject.petadoption.PetAdoptionCenterTest.task_3_correct_information_for_pet_buddy_printed
+        timeout: 10
+        max-score: 5
+    - name: Pet Adoption Center Task 4 Adopter Jane
+      id: pet-adoption-center-task-4-adopter-jane
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Pet Adoption Center Task 4 Adopter Jane
+        setup-command: ''
+        command: gradle test --tests de.phl.programmingproject.petadoption.PetAdoptionCenterTest.task_4_correct_information_for_adopter_jane_printed
+        timeout: 10
+        max-score: 5
+    - name: Pet Adoption Center Task 7 Adoption
+      id: pet-adoption-center-task-7-adoption
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Pet Adoption Center Task 7 Adoption
+        setup-command: ''
+        command: gradle test --tests de.phl.programmingproject.petadoption.PetAdoptionCenterTest.task_7_correct_information_for_adoption_printed
+        timeout: 10
+        max-score: 10
+    - name: Student Enrollment System Task 3 John Doe
+      id: student-enrollment-system-task-3-john-doe
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Student Enrollment System Task 3 John Doe
+        setup-command: ''
+        command: gradle test --tests de.phl.programmingproject.enrollmentsystem.StudentEnrollmentSystemTest.task_3_correct_information_for_student_john_printed
+        timeout: 10
+        max-score: 10
+    - name: Student Enrollment System Task 3 Course Einfuehrung in die Informatik
+      id: student-enrollment-system-task-3-course-einfuehrung-in-die-informatik
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Student Enrollment System Task 3 Course Einfuehrung in die Informatik
+        setup-command: ''
+        command: gradle test --tests de.phl.programmingproject.enrollmentsystem.StudentEnrollmentSystemTest.task_3_correct_information_for_course_introduction_to_cs_printed
+        timeout: 10
+        max-score: 20
+    - name: Student Enrollment System Task 6 John is enrolled in Intro to CS
+      id: student-enrollment-system-task-6-john-is-enrolled-in-intro-to-cs
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Student Enrollment System Task 6 John is enrolled in Intro to CS
+        setup-command: ''
+        command: gradle test --tests de.phl.programmingproject.enrollmentsystem.StudentEnrollmentSystemTest.task_6_student_is_enrolled_in_introduction_to_computer_science
+        timeout: 10
+        max-score: 10
+    - name: Student Enrollment System Task 8 Grade is set to 4.0
+      id: student-enrollment-system-task-8-grade-is-set-to-4-0
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Student Enrollment System Task 8 Grade is set to 4.0
+        setup-command: ''
+        command: gradle test --tests de.phl.programmingproject.enrollmentsystem.StudentEnrollmentSystemTest.task_8_grade_of_introduction_to_computer_science_is_set_to_4
+        timeout: 10
+        max-score: 10
+    - name: Student Enrollment System Task 11 John is enrolled in OOP
+      id: student-enrollment-system-task-11-john-is-enrolled-in-oop
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Student Enrollment System Task 11 John is enrolled in OOP
+        setup-command: ''
+        command: gradle test --tests de.phl.programmingproject.enrollmentsystem.StudentEnrollmentSystemTest.task_11_student_is_enrolled_in_oop
+        timeout: 10
+        max-score: 10
+    - name: Student Enrollment System Task 12 Print list of students enrolled to Intro
+        to CS
+      id: student-enrollment-system-task-12-print-list-of-students-enrolled-to-intro-to-cs
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Student Enrollment System Task 12 Print list of students enrolled
+          to Intro to CS
+        setup-command: ''
+        command: gradle test --tests de.phl.programmingproject.enrollmentsystem.StudentEnrollmentSystemTest.task_12_print_list_of_students_for_introduction_to_cs
+        timeout: 10
+        max-score: 10
+    - name: Student Enrollment System Task 14 John is not enrolled anymore in Intro
+        to CS
+      id: student-enrollment-system-task-14-john-is-not-enrolled-anymore-in-intro-to-cs
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Student Enrollment System Task 14 John is not enrolled anymore
+          in Intro to CS
+        setup-command: ''
+        command: gradle test --tests de.phl.programmingproject.enrollmentsystem.StudentEnrollmentSystemTest.task_14_john_doe_not_enrolled_in_introduction_to_cs
+        timeout: 10
+        max-score: 10
+    - name: Autograding Reporter
+      uses: classroom-resources/autograding-grading-reporter@v1
+      env:
+        PET-ADOPTION-CENTER-TASK-3-PET-BUDDY_RESULTS: "${{steps.pet-adoption-center-task-3-pet-buddy.outputs.result}}"
+        PET-ADOPTION-CENTER-TASK-4-ADOPTER-JANE_RESULTS: "${{steps.pet-adoption-center-task-4-adopter-jane.outputs.result}}"
+        PET-ADOPTION-CENTER-TASK-7-ADOPTION_RESULTS: "${{steps.pet-adoption-center-task-7-adoption.outputs.result}}"
+        STUDENT-ENROLLMENT-SYSTEM-TASK-3-JOHN-DOE_RESULTS: "${{steps.student-enrollment-system-task-3-john-doe.outputs.result}}"
+        STUDENT-ENROLLMENT-SYSTEM-TASK-3-COURSE-EINFUEHRUNG-IN-DIE-INFORMATIK_RESULTS: "${{steps.student-enrollment-system-task-3-course-einfuehrung-in-die-informatik.outputs.result}}"
+        STUDENT-ENROLLMENT-SYSTEM-TASK-6-JOHN-IS-ENROLLED-IN-INTRO-TO-CS_RESULTS: "${{steps.student-enrollment-system-task-6-john-is-enrolled-in-intro-to-cs.outputs.result}}"
+        STUDENT-ENROLLMENT-SYSTEM-TASK-8-GRADE-IS-SET-TO-4-0_RESULTS: "${{steps.student-enrollment-system-task-8-grade-is-set-to-4-0.outputs.result}}"
+        STUDENT-ENROLLMENT-SYSTEM-TASK-11-JOHN-IS-ENROLLED-IN-OOP_RESULTS: "${{steps.student-enrollment-system-task-11-john-is-enrolled-in-oop.outputs.result}}"
+        STUDENT-ENROLLMENT-SYSTEM-TASK-12-PRINT-LIST-OF-STUDENTS-ENROLLED-TO-INTRO-TO-CS_RESULTS: "${{steps.student-enrollment-system-task-12-print-list-of-students-enrolled-to-intro-to-cs.outputs.result}}"
+        STUDENT-ENROLLMENT-SYSTEM-TASK-14-JOHN-IS-NOT-ENROLLED-ANYMORE-IN-INTRO-TO-CS_RESULTS: "${{steps.student-enrollment-system-task-14-john-is-not-enrolled-anymore-in-intro-to-cs.outputs.result}}"
+      with:
+        runners: pet-adoption-center-task-3-pet-buddy,pet-adoption-center-task-4-adopter-jane,pet-adoption-center-task-7-adoption,student-enrollment-system-task-3-john-doe,student-enrollment-system-task-3-course-einfuehrung-in-die-informatik,student-enrollment-system-task-6-john-is-enrolled-in-intro-to-cs,student-enrollment-system-task-8-grade-is-set-to-4-0,student-enrollment-system-task-11-john-is-enrolled-in-oop,student-enrollment-system-task-12-print-list-of-students-enrolled-to-intro-to-cs,student-enrollment-system-task-14-john-is-not-enrolled-anymore-in-intro-to-cs
