@@ -40,12 +40,15 @@ public class Main {
         final Course oop = new Course("Object-Oriented Programming");
         System.out.println("\n=== Zweiter Kurs erstellt ===");
         System.out.println("Kurs:    " + oop.getInfo());
+
         // 10. Studenten in den neuen Kurs einschreiben
         final Enrollment johnInOop = john.enroll(oop);
         System.out.println("\n=== 10) Einschreibung in Kurs 2 ===");
         System.out.println(johnInOop.getInfo());
 
         // 11. Ausgabe der Studenten  (getCourses)
+        System.out.println("\n=== 11) Student-Info nach Einschreibung in OOP ===");
+        System.out.println("Student: " + john.getInfo()); // enthält jetzt OOP
         System.out.println("\n=== 11) Kurse des Studenten (getCourses) ===");
         String coursesOfJohn = john.getCourses().stream()
                 .map(Course::getName)
@@ -53,11 +56,13 @@ public class Main {
         System.out.println("Kurse von " + john.getName() + ": [" + coursesOfJohn + "]");
 
         // 12.  Liste der Studierenden im ersten Kurs (getStudents)
-        System.out.println("\n=== 12) Studierende im ersten Kurs (getStudents) ===");
+         System.out.println("\n=== 12) Studierende im ersten Kurs (getStudents) ===");
         String studentsInIntro = intro.getStudents().stream()
                 .map(Student::getName)
                 .collect(Collectors.joining(", "));
         System.out.println("Studierende in '" + intro.getName() + "': [" + studentsInIntro + "]");
+        System.out.println("Kurs:    " + intro.getInfo()); // zeigt Student: [John Doe]
+
 
         // 13.  Studenten aus dem ersten Kurs streichen (drop)
         System.out.println("\n=== 13) Drop aus erstem Kurs ===");
