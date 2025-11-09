@@ -47,32 +47,28 @@ public class Main {
         System.out.println(johnInOop.getInfo());
 
         // 11. Ausgabe der Studenten  (getCourses)
-        System.out.println("\n=== 11) Student ist jetzt in beiden Kursen ===");
-        System.out.println("Name: John Doe, ID: 12345, Courses: [Introduction to Computer Science, Object-Oriented Programming]");
-        String coursesOfJohn = john.getCourses().stream()
-                .map(Course::getName)
-                .collect(Collectors.joining(", "));
-        System.out.println("Kurse von " + john.getName() + ": [" + coursesOfJohn + "]");
+        System.out.println(
+        john.getCourses().stream()
+        .map(Course::getName)
+        .sorted() // optional: für deterministische Reihenfolge
+        .collect(Collectors.joining(", "))
+   );
 
         // 12.  Liste der Studierenden im ersten Kurs (getStudents)
-         System.out.println("\n=== 12) Studierende im ersten Kurs (getStudents) ===");
-        String studentsInIntro = intro.getStudents().stream()
-                .map(Student::getName)
-                .collect(Collectors.joining(", "));
-        System.out.println("Studierende in '" + intro.getName() + "': [" + studentsInIntro + "]");
-        System.out.println("Kurs:    " + intro.getInfo()); // zeigt Student: [John Doe]
-
+        System.out.println(
+        intro.getStudents().stream()
+        .map(Student::getName)
+        .collect(Collectors.joining(", "))
+        );
 
         // 13.  Studenten aus dem ersten Kurs streichen (drop)
-        System.out.println("\n=== 13) Drop aus erstem Kurs ===");
-        intro.drop(john);
+    intro.drop(john);
 
         // 14. Liste der Studierenden im ersten Kurs erneut ausgeben
-        System.out.println("\n=== 14) Studierende im ersten Kurs nach Drop ===");
-        String studentsInIntroAfter = intro.getStudents().stream()
-                .map(Student::getName)
-                .collect(Collectors.joining(", "));
-        System.out.println("Studierende in '" + intro.getName() + "': [" + studentsInIntroAfter + "]");
-
+    System.out.println(
+    intro.getStudents().stream()
+        .map(Student::getName)
+        .collect(Collectors.joining(", ")) 
+        );
     } 
 }
