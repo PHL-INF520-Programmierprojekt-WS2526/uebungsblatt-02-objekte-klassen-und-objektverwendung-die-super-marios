@@ -47,28 +47,18 @@ public class Main {
         System.out.println(johnInOop.getInfo());
 
         // 11. Ausgabe der Studenten  (getCourses)
-      System.out.println(
-            john.getCourses().stream()
-                .map(Course::getName)
-                .sorted() 
-                .collect(Collectors.toList())
-        );
+     System.out.println(john.getCourses());
+
 
         // 12.  Liste der Studierenden im ersten Kurs (getStudents)
-         System.out.println(
-            intro.getStudents().stream()
-                .map(Student::getName)
-                .collect(Collectors.toList())
-        );
+     System.out.println(intro.getStudents());
+
 
         // 13.  Studenten aus dem ersten Kurs streichen (drop)
         intro.drop(john);
 
         // 14. Liste der Studierenden im ersten Kurs erneut ausgeben
-        System.out.println(
-        intro.getStudents().stream()
-        .map(Student::getName)
-        .collect(Collectors.joining(", ")) 
-        );
+       System.out.println(intro.getStudents());
+
     } 
 }
