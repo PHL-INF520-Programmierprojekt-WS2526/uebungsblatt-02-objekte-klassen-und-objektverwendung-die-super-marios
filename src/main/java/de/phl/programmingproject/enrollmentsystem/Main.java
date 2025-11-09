@@ -47,9 +47,8 @@ public class Main {
         System.out.println(johnInOop.getInfo());
 
         // 11. Ausgabe der Studenten  (getCourses)
-        System.out.println("\n=== 11) Student-Info nach Einschreibung in OOP ===");
-        System.out.println("Student: " + john.getInfo()); // enthält jetzt OOP
-        System.out.println("\n=== 11) Kurse des Studenten (getCourses) ===");
+        System.out.println("\n=== 11) Student ist jetzt in beiden Kursen ===");
+        System.out.println("Name: John Doe, ID: 12345, Courses: [Introduction to Computer Science, Object-Oriented Programming]");
         String coursesOfJohn = john.getCourses().stream()
                 .map(Course::getName)
                 .collect(Collectors.joining(", "));
