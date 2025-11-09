@@ -1,0 +1,11 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Main",
+            "request": "launch",
+            "mainClass": "de.phl.programmingproject.enrollmentsystem.Main",
+            "projectName": "uebungsblatt-02-objekte-klassen-und-objektverwendung-die-super-marios"
+        }
+    ]
+}
