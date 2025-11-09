@@ -12,7 +12,7 @@ public class Main {
        // 2. Course-Objekt
         final Course intro = new Course("Introduction to Computer Science");
 
-        /* 3. Infos ausgeben */ 
+        /* 3. Infos  */ 
         System.out.println("=== Vor der Einschreibung ===");
         System.out.println("Student: " + john.getInfo());
         System.out.println("Kurs:    " + intro.getInfo());
@@ -36,7 +36,7 @@ public class Main {
         System.out.println("\n=== Enrollment-Info (mit Note) ===");
         System.out.println(johnInIntro.getInfo());
 
-        // 9.  Zweiten Kurs anlegen
+        // 9.  Zweiter Kurs
         final Course oop = new Course("Object-Oriented Programming");
         System.out.println("\n=== Zweiter Kurs erstellt ===");
         System.out.println("Kurs:    " + oop.getInfo());
@@ -47,17 +47,19 @@ public class Main {
         System.out.println(johnInOop.getInfo());
 
         // 11. Ausgabe der Studenten  (getCourses)
-       john.getCourses().stream()
-       .map(Course::getName)
-       .sorted() 
-       .forEach(System.out::println);
+      System.out.println(
+            john.getCourses().stream()
+                .map(Course::getName)
+                .sorted() 
+                .collect(Collectors.toList())
+        );
 
         // 12.  Liste der Studierenden im ersten Kurs (getStudents)
-        intro.getStudents().stream()
-       .map(Student::getName)
-        .forEach(System.out::println);
-         System.out.println("John Doe");
-
+         System.out.println(
+            intro.getStudents().stream()
+                .map(Student::getName)
+                .collect(Collectors.toList())
+        );
 
         // 13.  Studenten aus dem ersten Kurs streichen (drop)
         intro.drop(john);
