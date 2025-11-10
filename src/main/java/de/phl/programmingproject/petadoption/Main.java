@@ -8,5 +8,7 @@ import java.util.Date;
 public class Main {
     public static void main(String[] args) {
         // TODO implement your program here
+        Pet buddy = new Pet("Buddy", 3, "Labrador Retriever");
+        System.out.println(buddy.getInfo());
     }
 }
