@@ -10,7 +10,11 @@ public class Main {
         // TODO implement your program here
         Pet buddy = new Pet("Buddy", 3, "Labrador Retriever");
         System.out.println(buddy.getInfo());
+
         Adopter Jane_Smith = new Adopter("Jane Smith", "555-555-5555", "janesmith@email.com");
         System.out.println(Jane_Smith.getInfo());
+
+        boolean adopted = buddy.isAdopted();
+        System.out.println("Wurde das Tier adoptiert?" + adopted);
     }
 }
