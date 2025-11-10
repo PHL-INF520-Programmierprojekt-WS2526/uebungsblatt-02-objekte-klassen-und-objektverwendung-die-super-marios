@@ -14,9 +14,9 @@ public class Pet {
 
     /**
      * Creates a new pet with the given name, age and breed.
-     * @param name The name of the pet.
-     * @param age The age of the pet.
-     * @param breed The breed of the pet.
+     * @param Buddy The name of the pet.
+     * @param 3 The age of the pet.
+     * @param Labrador_Retriever The breed of the pet.
      * @throws IllegalArgumentException If the name is null or empty, the age is negative or the breed is null or empty.
      */
     public Pet(final String name, final int age, final String breed) {
