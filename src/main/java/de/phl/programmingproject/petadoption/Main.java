@@ -20,5 +20,7 @@ public class Main {
 
         buddy.adopt(Jane_Smith, new Date ());
         System.out.println(adoption.getInfo());
+
+        System.out.println(buddy.isAdopted());
     }
 }
