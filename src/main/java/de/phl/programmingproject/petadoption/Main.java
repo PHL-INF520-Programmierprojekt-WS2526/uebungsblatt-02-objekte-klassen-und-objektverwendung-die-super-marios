@@ -16,5 +16,7 @@ public class Main {
 
         boolean adopted = buddy.isAdopted();
         System.out.println("Wurde das Tier adoptiert?" + adopted);
+
+        buddy.adopt(Jane_Smith, new Date ())
     }
 }
